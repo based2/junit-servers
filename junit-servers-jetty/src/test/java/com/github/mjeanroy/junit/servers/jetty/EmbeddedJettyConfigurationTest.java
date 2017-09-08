@@ -30,6 +30,9 @@ import org.eclipse.jetty.util.resource.Resource;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import java.net.URL;
+import java.net.URLClassLoader;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class EmbeddedJettyConfigurationTest {
@@ -74,9 +77,12 @@ public class EmbeddedJettyConfigurationTest {
 
 	@Test
 	public void it_should_implement_equals_hashCode() {
+		ClassLoader red = getClass().getClassLoader();
+		ClassLoader black = new URLClassLoader(new URL[0]);
 		EqualsVerifier.forClass(EmbeddedJettyConfiguration.class)
 			.suppress(Warning.STRICT_INHERITANCE)
 			.withRedefinedSuperclass()
+			.withPrefabValues(ClassLoader.class, red, black)
 			.verify();
 	}
 
@@ -90,7 +96,7 @@ public class EmbeddedJettyConfigurationTest {
 				"webapp: \"src/main/webapp\", " +
 				"classpath: \".\", " +
 				"overrideDescriptor: null, " +
-				"parentClasspath: [], " +
+				"parentClasspath: null, " +
 				"stopTimeout: 30000, " +
 				"stopAtShutdown: true, " +
 				"baseResource: null" +

@@ -24,18 +24,15 @@
 
 package com.github.mjeanroy.junit.servers.servers.configuration;
 
-import static java.util.Collections.unmodifiableCollection;
-import static java.util.Collections.unmodifiableList;
-import static java.util.Collections.unmodifiableMap;
+import com.github.mjeanroy.junit.servers.commons.ToStringBuilder;
+import com.github.mjeanroy.junit.servers.servers.Hook;
 
-import java.net.URL;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import com.github.mjeanroy.junit.servers.commons.ToStringBuilder;
-import com.github.mjeanroy.junit.servers.servers.Hook;
+import static java.util.Collections.unmodifiableList;
+import static java.util.Collections.unmodifiableMap;
 
 /**
  * Generic configuration that should be extended for
@@ -89,7 +86,7 @@ public abstract class AbstractConfiguration {
 	 * before server is started.
 	 *
 	 */
-	private final Collection<URL> parentClasspath;
+	private final ClassLoader parentClasspath;
 	
 	/**
 	 * Map of environment properties to set before server start.
@@ -166,8 +163,8 @@ public abstract class AbstractConfiguration {
 	 *
 	 * @return {@link #parentClasspath}
 	 */
-	public Collection<URL> getParentClasspath() {
-		return unmodifiableCollection(parentClasspath);
+	public ClassLoader getParentClasspath() {
+		return parentClasspath;
 	}
 
 	/**

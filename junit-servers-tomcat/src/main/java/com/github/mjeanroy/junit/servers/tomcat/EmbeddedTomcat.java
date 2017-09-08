@@ -24,6 +24,7 @@
 
 package com.github.mjeanroy.junit.servers.tomcat;
 
+import com.github.mjeanroy.junit.servers.commons.CompositeClassLoader;
 import com.github.mjeanroy.junit.servers.exceptions.ServerInitializationException;
 import com.github.mjeanroy.junit.servers.exceptions.ServerStartException;
 import com.github.mjeanroy.junit.servers.exceptions.ServerStopException;
@@ -37,9 +38,6 @@ import org.apache.tomcat.util.scan.StandardJarScanner;
 
 import javax.servlet.ServletContext;
 import java.io.File;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.Collection;
 
 import static com.github.mjeanroy.junit.servers.commons.Strings.isNotBlank;
 import static com.github.mjeanroy.junit.servers.tomcat.EmbeddedTomcatConfiguration.defaultConfiguration;
@@ -116,7 +114,7 @@ public class EmbeddedTomcat extends AbstractEmbeddedServer<Tomcat, EmbeddedTomca
 		final String path = configuration.getPath();
 		final String classpath = configuration.getClasspath();
 		final boolean forceMetaInf = configuration.isForceMetaInf();
-		final Collection<URL> parentClasspath = configuration.getParentClasspath();
+		final ClassLoader parentClasspath = configuration.getParentClasspath();
 		final String descriptor = configuration.getOverrideDescriptor();
 
 		File webappDirectory = new File(webapp);
@@ -165,10 +163,9 @@ public class EmbeddedTomcat extends AbstractEmbeddedServer<Tomcat, EmbeddedTomca
 			// Custom parent classloader.
 			final ClassLoader threadCl = Thread.currentThread().getContextClassLoader();
 			final ClassLoader parentClassLoader;
-			final int nbUrls = parentClasspath.size();
-			if (nbUrls > 0) {
-				URL[] urls = parentClasspath.toArray(new URL[nbUrls]);
-				parentClassLoader = new URLClassLoader(urls, threadCl);
+
+			if (parentClasspath != null) {
+				parentClassLoader = new CompositeClassLoader(parentClasspath, threadCl);
 			} else {
 				parentClassLoader = threadCl;
 			}

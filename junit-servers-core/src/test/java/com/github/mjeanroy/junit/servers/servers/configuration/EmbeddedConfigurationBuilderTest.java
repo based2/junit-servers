@@ -42,9 +42,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.entry;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class EmbeddedConfigurationBuilderTest {
@@ -125,9 +123,7 @@ public class EmbeddedConfigurationBuilderTest {
 		EmbeddedConfigurationBuilder result = builder.withParentClasspath(c1, c2);
 
 		assertThat(result).isSameAs(builder);
-		assertThat(result.getParentClasspath())
-			.isNotEmpty()
-			.containsAll(Arrays.asList(c1, c2));
+		assertThat(result.getParentClasspath()).isNotNull();
 	}
 
 	@Test
@@ -139,9 +135,7 @@ public class EmbeddedConfigurationBuilderTest {
 		EmbeddedConfigurationBuilder result = builder.withParentClasspath(urls);
 
 		assertThat(result).isSameAs(builder);
-		assertThat(result.getParentClasspath())
-			.isNotEmpty()
-			.containsAll(urls);
+		assertThat(result.getParentClasspath()).isNotNull();
 	}
 
 	@Test
@@ -153,8 +147,8 @@ public class EmbeddedConfigurationBuilderTest {
 		EmbeddedConfigurationBuilder result = builder.withParentClasspath(klass, filter);
 
 		assertThat(result).isSameAs(builder);
-		assertThat(result.getParentClasspath()).isNotEmpty();
-		verify(filter, atLeastOnce()).accept(any(File.class));
+		assertThat(result.getParentClasspath()).isNotNull();
+		assertThat(result.getParentClasspath().getResource("logback-test.xml")).isNotNull();
 	}
 
 	@Test
@@ -163,7 +157,8 @@ public class EmbeddedConfigurationBuilderTest {
 		EmbeddedConfigurationBuilder result = builder.withParentClasspath(klass);
 
 		assertThat(result).isSameAs(builder);
-		assertThat(result.getParentClasspath()).isNotEmpty();
+		assertThat(result.getParentClasspath()).isNotNull();
+		assertThat(result.getParentClasspath().getResource("logback-test.xml")).isNotNull();
 	}
 
 	@Test

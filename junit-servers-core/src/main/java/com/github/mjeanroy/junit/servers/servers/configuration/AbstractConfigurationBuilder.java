@@ -42,7 +42,6 @@ import java.util.Set;
 import static com.github.mjeanroy.junit.servers.commons.Preconditions.notBlank;
 import static com.github.mjeanroy.junit.servers.commons.Preconditions.notNull;
 import static com.github.mjeanroy.junit.servers.commons.Preconditions.positive;
-import static java.util.Arrays.asList;
 
 /**
  * Builder for {@link AbstractConfiguration} instances, should be extended by custom configuration implementation.
@@ -105,7 +104,7 @@ public abstract class AbstractConfigurationBuilder<T extends AbstractConfigurati
 	 *
 	 * @see com.github.mjeanroy.junit.servers.servers.configuration.AbstractConfiguration#parentClasspath
 	 */
-	private Collection<URL> parentClasspath;
+	private ClassLoader parentClasspath;
 
 	/**
 	 * Map of properties.
@@ -136,7 +135,7 @@ public abstract class AbstractConfigurationBuilder<T extends AbstractConfigurati
 		this.classpath = DEFAULT_CLASSPATH;
 		this.envProperties = new HashMap<>();
 		this.hooks = new LinkedList<>();
-		this.parentClasspath = Collections.emptyList();
+		this.parentClasspath = null;
 	}
 
 	protected abstract T self();
@@ -202,7 +201,7 @@ public abstract class AbstractConfigurationBuilder<T extends AbstractConfigurati
 	 *
 	 * @return {@link #parentClasspath}.
 	 */
-	public Collection<URL> getParentClasspath() {
+	public ClassLoader getParentClasspath() {
 		return parentClasspath;
 	}
 
@@ -307,17 +306,6 @@ public abstract class AbstractConfigurationBuilder<T extends AbstractConfigurati
 	/**
 	 * Change {@link #parentClasspath} value.
 	 *
-	 * @param classpath New {@link #parentClasspath} value.
-	 * @return this
-	 */
-	public T withParentClasspath(Collection<URL> classpath) {
-		this.parentClasspath = classpath;
-		return self();
-	}
-
-	/**
-	 * Change {@link #parentClasspath} value.
-	 *
 	 * @param cls The class that will be used to get classloader.
 	 * @param filter The file filter.
 	 * @return this
@@ -325,18 +313,7 @@ public abstract class AbstractConfigurationBuilder<T extends AbstractConfigurati
 	 */
 	@Deprecated
 	public T withParentClasspath(Class<?> cls, FileFilter filter) {
-		notNull(cls, "Base class");
-
-		URLClassLoader urlClassLoader = (URLClassLoader) cls.getClassLoader();
-
-		Set<URL> urls = new HashSet<>();
-		for (URL url : urlClassLoader.getURLs()) {
-			if (filter.accept(new File(url.getFile()))) {
-				urls.add(url);
-			}
-		}
-
-		return withParentClasspath(urls);
+		return withParentClasspath(cls);
 	}
 
 	/**
@@ -347,11 +324,7 @@ public abstract class AbstractConfigurationBuilder<T extends AbstractConfigurati
 	 */
 	public T withParentClasspath(Class<?> cls) {
 		notNull(cls, "Base class");
-
-		ClassLoader classLoader = cls.getClassLoader();
-		URLClassLoader urlClassLoader = (URLClassLoader) classLoader;
-		URL[] urLs = urlClassLoader.getURLs();
-		return withParentClasspath(asList(urLs));
+		return withParentClasspath(cls.getClassLoader());
 	}
 
 	/**
@@ -366,6 +339,28 @@ public abstract class AbstractConfigurationBuilder<T extends AbstractConfigurati
 		classpathUrls.add(classpath);
 		Collections.addAll(classpathUrls, others);
 		return withParentClasspath(classpathUrls);
+	}
+
+	/**
+	 * Change {@link #parentClasspath} value.
+	 *
+	 * @param classpath New {@link #parentClasspath} value.
+	 * @return this
+	 */
+	public T withParentClasspath(Collection<URL> classpath) {
+		int nbUrls = classpath.size();
+		if (nbUrls > 0) {
+			URL[] urls = classpath.toArray(new URL[nbUrls]);
+			URLClassLoader urlClassLoader = new URLClassLoader(urls);
+			withParentClasspath(urlClassLoader);
+		}
+
+		return self();
+	}
+
+	private T withParentClasspath(ClassLoader parentClasspath) {
+		this.parentClasspath = parentClasspath;
+		return self();
 	}
 
 	/**
