@@ -1,5 +1,5 @@
 # https://docs.travis-ci.com/user/precise-to-trusty-migration-guide/
-dist: precise
+dist: trusty
 
 # See: https://github.com/travis-ci/travis-ci/issues/7019
 sudo: required
