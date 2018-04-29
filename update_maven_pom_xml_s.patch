@@ -1,0 +1,572 @@
+Index: samples/spring-webxml-tomcat-jsp/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- samples/spring-webxml-tomcat-jsp/pom.xml	(revision 75f4bd2f91dd401b414a11970b35bf879cd974c9)
++++ samples/spring-webxml-tomcat-jsp/pom.xml	(date 1525018241000)
+@@ -42,6 +42,7 @@
+ 		<dependency>
+ 			<groupId>org.springframework</groupId>
+ 			<artifactId>spring-webmvc</artifactId>
++			<version>${spring.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.owasp.encoder</groupId>
+@@ -92,10 +93,12 @@
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-deploy-plugin</artifactId>
++				<version>${maven-deploy-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-war-plugin</artifactId>
++				<version>${maven-war-plugin.version}</version>
+ 			</plugin>
+ 		</plugins>
+ 	</build>
+Index: junit-servers-core/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- junit-servers-core/pom.xml	(revision 75f4bd2f91dd401b414a11970b35bf879cd974c9)
++++ junit-servers-core/pom.xml	(date 1525018838000)
+@@ -44,6 +44,7 @@
+ 		<dependency>
+ 			<groupId>junit</groupId>
+ 			<artifactId>junit</artifactId>
++			<version>${junit.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>javax.servlet</groupId>
+@@ -59,26 +60,31 @@
+ 		<dependency>
+ 			<groupId>org.assertj</groupId>
+ 			<artifactId>assertj-core</artifactId>
++			<version>${assertj.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.apache.commons</groupId>
+ 			<artifactId>commons-lang3</artifactId>
++			<version>${commons-lang3.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>commons-io</groupId>
+ 			<artifactId>commons-io</artifactId>
++			<version>${commons-io.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>com.github.tomakehurst</groupId>
+ 			<artifactId>wiremock</artifactId>
++			<version>${wiremock.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>nl.jqno.equalsverifier</groupId>
+ 			<artifactId>equalsverifier</artifactId>
++			<version>${equalsverifier.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+@@ -119,10 +125,12 @@
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-compiler-plugin</artifactId>
++				<version>${maven-compiler-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-surefire-plugin</artifactId>
++				<version>${maven-surefire-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.codehaus.mojo</groupId>
+Index: junit-servers-jetty/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- junit-servers-jetty/pom.xml	(revision 75f4bd2f91dd401b414a11970b35bf879cd974c9)
++++ junit-servers-jetty/pom.xml	(date 1525020267000)
+@@ -50,6 +50,7 @@
+ 		<dependency>
+ 			<groupId>junit</groupId>
+ 			<artifactId>junit</artifactId>
++			<version>${junit.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>javax.servlet</groupId>
+@@ -60,73 +61,89 @@
+ 		<dependency>
+ 			<groupId>org.eclipse.jetty</groupId>
+ 			<artifactId>jetty-server</artifactId>
++			<version>${jetty.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.eclipse.jetty</groupId>
+ 			<artifactId>jetty-webapp</artifactId>
++			<version>${jetty.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.eclipse.jetty</groupId>
+ 			<artifactId>apache-jsp</artifactId>
++			<version>${jetty.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.eclipse.jetty</groupId>
+ 			<artifactId>jetty-jsp</artifactId>
++			<version>${jetty.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.eclipse.jetty</groupId>
+ 			<artifactId>jetty-jndi</artifactId>
++			<version>${jetty.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.eclipse.jetty</groupId>
+ 			<artifactId>jetty-util</artifactId>
++			<version>${jetty.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.eclipse.jetty</groupId>
+ 			<artifactId>jetty-annotations</artifactId>
++			<version>${jetty.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.eclipse.jetty</groupId>
+ 			<artifactId>jetty-continuation</artifactId>
++			<version>${jetty.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.eclipse.jetty.websocket</groupId>
+ 			<artifactId>websocket-server</artifactId>
++			<version>${jetty.version}</version>
+ 		</dependency>
+ 
+ 		<dependency>
+ 			<groupId>org.assertj</groupId>
+ 			<artifactId>assertj-core</artifactId>
++			<version>${assertj.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.mockito</groupId>
+ 			<artifactId>mockito-core</artifactId>
++			<version>${mockito.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.apache.commons</groupId>
+ 			<artifactId>commons-lang3</artifactId>
++			<version>${commons-lang3.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>nl.jqno.equalsverifier</groupId>
+ 			<artifactId>equalsverifier</artifactId>
++			<version>${equalsverifier.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>com.squareup.okhttp3</groupId>
+ 			<artifactId>okhttp</artifactId>
++			<version>${okhttp.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.slf4j</groupId>
+ 			<artifactId>slf4j-api</artifactId>
++			<version>${slf4j.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>ch.qos.logback</groupId>
+ 			<artifactId>logback-classic</artifactId>
++			<version>${logback.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 	</dependencies>
+@@ -136,10 +153,12 @@
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-compiler-plugin</artifactId>
++				<version>${maven-compiler-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-surefire-plugin</artifactId>
++				<version>${maven-surefire-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.codehaus.mojo</groupId>
+Index: junit-servers-tomcat/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- junit-servers-tomcat/pom.xml	(revision 75f4bd2f91dd401b414a11970b35bf879cd974c9)
++++ junit-servers-tomcat/pom.xml	(date 1525018608000)
+@@ -129,10 +129,12 @@
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-compiler-plugin</artifactId>
++				<version>${maven-compiler-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-surefire-plugin</artifactId>
++				<version>${maven-surefire-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.codehaus.mojo</groupId>
+Index: samples/spring-java-tomcat/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- samples/spring-java-tomcat/pom.xml	(revision 75f4bd2f91dd401b414a11970b35bf879cd974c9)
++++ samples/spring-java-tomcat/pom.xml	(date 1525018011000)
+@@ -44,6 +44,7 @@
+ 		<dependency>
+ 			<groupId>org.springframework</groupId>
+ 			<artifactId>spring-webmvc</artifactId>
++			<version>${spring.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>javax.servlet</groupId>
+@@ -60,6 +61,7 @@
+ 		<dependency>
+ 			<groupId>org.assertj</groupId>
+ 			<artifactId>assertj-core</artifactId>
++			<version>${assertj.version}</version>
+ 			<scope>test</scope>
+ 		</dependency>
+ 		<dependency>
+@@ -74,10 +76,12 @@
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-deploy-plugin</artifactId>
++				<version>${maven-deploy-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-war-plugin</artifactId>
++				<version>${maven-war-plugin.version}</version>
+ 			</plugin>
+ 		</plugins>
+ 	</build>
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(revision 75f4bd2f91dd401b414a11970b35bf879cd974c9)
++++ pom.xml	(date 1525020186000)
+@@ -84,37 +84,40 @@
+ 
+ 		<maven.compiler.source>1.7</maven.compiler.source>
+ 		<maven.compiler.target>1.7</maven.compiler.target>
+-		<maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
+-		<maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
++		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
++		<maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
+ 		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+-		<maven-javadoc-plugin>2.10.4</maven-javadoc-plugin>
++		<maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
+ 		<maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
+ 		<maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+ 		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+ 		<maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
++		<maven-war-version>3.2.0</maven-war-version>
+ 		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+ 		<maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
+ 		<maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+ 		<maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+ 		<maven-dependency-plugin.version>3.0.1</maven-dependency-plugin.version>
+ 		<maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
++		<maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+ 
+ 		<apache-rat-plugin.version>0.10</apache-rat-plugin.version>
+ 		<versions-maven-plugin.version>2.1</versions-maven-plugin.version>
+ 		<animal-sniffer-maven-plugin.version>1.15</animal-sniffer-maven-plugin.version>
+ 		<java17-signature.version>1.0</java17-signature.version>
+ 
+-		<jetty.version>9.3.0.M1</jetty.version>
+-		<tomcat.version>8.0.44</tomcat.version>
+-		<junit.version>4.12</junit.version><javax.servlet-api.version>3.1.0</javax.servlet-api.version>
++		<jetty.version>9.3.0.M1</jetty.version><!-- 9.3.23.v20180228 9.4.9.v20180320 -->
++		<tomcat.version>8.0.51</tomcat.version><!-- 8.5.30 9.0.7 -->
++		<junit.version>4.12</junit.version><!-- https://github.com/junit-team/junit5/issues/619 -->
++		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+ 		<mockito.version>2.8.47</mockito.version>
+-		<assertj.version>2.8.0</assertj.version>
+-		<commons-lang3.version>3.6</commons-lang3.version>
++		<assertj.version>2.9.0</assertj.version><!-- http://joel-costigliola.github.io/assertj/assertj-news.html -->
++		<commons-lang3.version>3.7</commons-lang3.version>
+ 		<ning-async-http-client.version>1.9.40</ning-async-http-client.version>
+-		<async-http-client.version>2.0.31</async-http-client.version>
++		<async-http-client.version>2.0.31</async-http-client.version><!-- 2.4.5 -->
+ 		<httpclient.version>4.5.3</httpclient.version>
+ 		<okhttp.version>3.8.1</okhttp.version>
+-		<commons-io.version>2.5</commons-io.version>
++		<commons-io.version>2.6</commons-io.version>
+ 		<wiremock.version>2.6.0</wiremock.version>
+ 		<equalsverifier.version>2.3.1</equalsverifier.version>
+ 		<slf4j.version>1.7.25</slf4j.version>
+@@ -163,7 +166,7 @@
+ 			<dependency>
+ 				<groupId>org.eclipse.jetty</groupId>
+ 				<artifactId>jetty-jsp</artifactId>
+-				<version>${jetty.version}</version>
++				<version>9.3.0.M1</version>
+ 			</dependency>
+ 			<dependency>
+ 				<groupId>org.eclipse.jetty</groupId>
+@@ -426,21 +429,25 @@
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-compiler-plugin</artifactId>
++				<version>${maven-compiler-plugin.version}</version>
+ 			</plugin>
+ 
+ 			<plugin>
+ 				<groupId>org.codehaus.mojo</groupId>
+ 				<artifactId>versions-maven-plugin</artifactId>
++				<version>${versions-maven-plugin.version}</version>
+ 			</plugin>
+ 
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-enforcer-plugin</artifactId>
++				<version>${maven-enforcer-plugin.version}</version>
+ 			</plugin>
+ 
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-release-plugin</artifactId>
++				<version>${maven-release-plugin.version}</version>
+ 			</plugin>
+ 		</plugins>
+ 	</build>
+@@ -453,6 +460,7 @@
+ 					<plugin>
+ 						<groupId>org.apache.maven.plugins</groupId>
+ 						<artifactId>maven-gpg-plugin</artifactId>
++						<version>${maven-gpg-plugin.version}</version>
+ 						<executions>
+ 							<execution>
+ 								<id>sign-artifacts</id>
+@@ -467,6 +475,7 @@
+ 					<plugin>
+ 						<groupId>org.apache.maven.plugins</groupId>
+ 						<artifactId>maven-source-plugin</artifactId>
++						<version>${maven-source-plugin.version}</version>
+ 						<executions>
+ 							<execution>
+ 								<id>attach-sources</id>
+@@ -480,6 +489,7 @@
+ 					<plugin>
+ 						<groupId>org.apache.maven.plugins</groupId>
+ 						<artifactId>maven-javadoc-plugin</artifactId>
++						<version>${maven-javadoc-plugin.version}</version>
+ 						<executions>
+ 							<execution>
+ 								<id>attach-javadocs</id>
+Index: samples/spring-webxml-tomcat/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- samples/spring-webxml-tomcat/pom.xml	(revision 75f4bd2f91dd401b414a11970b35bf879cd974c9)
++++ samples/spring-webxml-tomcat/pom.xml	(date 1525018184000)
+@@ -74,10 +74,12 @@
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-deploy-plugin</artifactId>
++				<version>${maven-deploy-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-war-plugin</artifactId>
++				<version>${maven-war-plugin.version}</version>
+ 			</plugin>
+ 		</plugins>
+ 	</build>
+Index: samples/spring-webxml-jetty/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- samples/spring-webxml-jetty/pom.xml	(revision 75f4bd2f91dd401b414a11970b35bf879cd974c9)
++++ samples/spring-webxml-jetty/pom.xml	(date 1525018089000)
+@@ -44,6 +44,7 @@
+ 		<dependency>
+ 			<groupId>org.springframework</groupId>
+ 			<artifactId>spring-webmvc</artifactId>
++			<version>${spring.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>javax.servlet</groupId>
+@@ -73,14 +74,17 @@
+ 			<plugin>
+ 				<groupId>org.eclipse.jetty</groupId>
+ 				<artifactId>jetty-maven-plugin</artifactId>
++				<version>${jetty.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-deploy-plugin</artifactId>
++				<version>${maven-deploy-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-war-plugin</artifactId>
++				<version>${maven-war-plugin.version}</version>
+ 			</plugin>
+ 		</plugins>
+ 	</build>
+Index: samples/spring-webxml-jetty-jsp/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- samples/spring-webxml-jetty-jsp/pom.xml	(revision 75f4bd2f91dd401b414a11970b35bf879cd974c9)
++++ samples/spring-webxml-jetty-jsp/pom.xml	(date 1525018113000)
+@@ -41,6 +41,7 @@
+ 		<dependency>
+ 			<groupId>org.springframework</groupId>
+ 			<artifactId>spring-webmvc</artifactId>
++			<version>${spring.version}</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>org.owasp.encoder</groupId>
+@@ -65,6 +66,7 @@
+ 		<dependency>
+ 			<groupId>org.eclipse.jetty</groupId>
+ 			<artifactId>jetty-jsp</artifactId>
++			<version>9.3.0.M1</version>
+ 		</dependency>
+ 		<dependency>
+ 			<groupId>javax.servlet</groupId>
+@@ -94,19 +96,23 @@
+ 			<plugin>
+ 				<groupId>org.eclipse.jetty</groupId>
+ 				<artifactId>jetty-maven-plugin</artifactId>
++				<version>${jetty.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-deploy-plugin</artifactId>
++				<version>${maven-deploy-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-war-plugin</artifactId>
++				<version>${maven-war-plugin.version}</version>
+ 			</plugin>
+ 
+ 			<plugin>
+ 				<!-- For use in test-case which points to explicit lib directory  -->
+ 				<artifactId>maven-dependency-plugin</artifactId>
++				<version>${maven-dependency-plugin.version}</version>
+ 				<executions>
+ 					<execution>
+ 						<phase>validate</phase>
+@@ -133,6 +139,7 @@
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-surefire-plugin</artifactId>
++				<version>${maven-surefire-plugin.version}</version>
+ 				<configuration>
+ 					<!-- Needed to make jetty find its JSP TLDs. Without this, you'll get: 
+ 						org.apache.jasper.JasperException: /WEB-INF/views/index.jsp(1,68) PWC6188: 
+Index: samples/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- samples/pom.xml	(revision 75f4bd2f91dd401b414a11970b35bf879cd974c9)
++++ samples/pom.xml	(date 1525018334000)
+@@ -49,8 +49,8 @@
+ 	</modules>
+ 
+ 	<properties>
+-		<maven-war-plugin.version>3.1.0</maven-war-plugin.version>
+-		<spring.version>4.3.9.RELEASE</spring.version>
++		<maven-war-plugin.version>3.2.0</maven-war-plugin.version>
++		<spring.version>4.3.16.RELEASE</spring.version>
+ 	</properties>
+ 
+ 	<repositories>
+@@ -88,7 +88,7 @@
+ 				<plugin>
+ 					<groupId>org.apache.maven.plugins</groupId>
+ 					<artifactId>maven-javadoc-plugin</artifactId>
+-					<version>${maven-javadoc-plugin}</version>
++					<version>${maven-javadoc-plugin.version}</version>
+ 					<configuration>
+ 						<skip>true</skip>
+ 					</configuration>
+@@ -130,18 +130,22 @@
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-javadoc-plugin</artifactId>
++				<version>${maven-javadoc-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-deploy-plugin</artifactId>
++				<version>${maven-deploy-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-compiler-plugin</artifactId>
++				<version>${maven-compiler-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-surefire-plugin</artifactId>
++				<version>${maven-surefire-plugin.version}</version>
+ 			</plugin>
+ 		</plugins>
+ 	</build>
+Index: samples/spring-java-jetty/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- samples/spring-java-jetty/pom.xml	(revision 75f4bd2f91dd401b414a11970b35bf879cd974c9)
++++ samples/spring-java-jetty/pom.xml	(date 1525018031000)
+@@ -73,22 +73,27 @@
+ 			<plugin>
+ 				<groupId>org.eclipse.jetty</groupId>
+ 				<artifactId>jetty-maven-plugin</artifactId>
++				<version>${jetty.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-deploy-plugin</artifactId>
++				<version>${maven-deploy-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-compiler-plugin</artifactId>
++				<version>${maven-compiler-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-surefire-plugin</artifactId>
++				<version>${maven-surefire-plugin.version}</version>
+ 			</plugin>
+ 			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-war-plugin</artifactId>
++				<version>${maven-war-plugin.version}</version>
+ 			</plugin>
+ 		</plugins>
+ 	</build>
